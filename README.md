@@ -6,7 +6,7 @@
 3. Install dependencies ``` pipenv install --dev```
 
 ### Development support 💁
-Execute the following commands:
+Execute the following commands to assure code quality:
 
 - Linter
 ```commandline
@@ -164,5 +164,3 @@ docker load -i apple_stock_extremes_ml.tar
 - pytest coverage is 50%
 - currently, with each execution an additional experiment is being created. Look only at experiments within Random_Forest_Experiment and TCNN_Experiment
 - Docker execution doesn't work for  predict-rf and predict-tcnn
-- Models performance is low
-- model_predict on tcnn model will work for the experiment reported in api_config in configs/config.yaml and for any new experiment that is going to be created from now on, but it will not work for most of the rest pinned experiments. (Due to a small code refactor, the type of the saved model changed and creates a conflict. Due to lack of time, I couldn't re-run all the experiments to solve the conflict. Keeping the configuration file as is, works as expected though.)
