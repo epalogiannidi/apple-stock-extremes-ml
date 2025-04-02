@@ -97,22 +97,6 @@ class TCNNTrainer(MlflowExperiment):
             dropout=self.params["dropout"],
             attention=self.params["attention"],
         ).to(self.device)
-        # if self.params["attention"]:
-        #     self.tcnn: nn.Module = TCNNWithAttention(
-        #         self.train_data.shape[1],
-        #         self.params["channels"],
-        #         self.params["kernel"],
-        #         sequence_length=10,
-        #         dropout=self.params["dropout"],
-        #     ).to(self.device)
-        # else:
-        #     self.tcnn = TCNN(
-        #         self.train_data.shape[1],
-        #         self.params["channels"],
-        #         self.params["kernel"],
-        #         sequence_length=10,
-        #         dropout=self.params["dropout"],
-        #     ).to(self.device)
         self.batch_size = self.params["bs"]
         self.epochs = self.params["epochs"]
         self.lr = self.params["lr"]
