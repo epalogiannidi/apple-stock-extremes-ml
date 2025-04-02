@@ -31,7 +31,8 @@ def setup_parser():
             "predict-tcnn",
         ],
         required=True,
-        help="Specify the task to perform. Choices: rf, tcnn, delete, search.",
+        help="Specify the task to perform. Choices: data-analysis, train-rf, train-tcnn, end-to-end,t une-tcnn, "
+             "predict-rf,predict-tcnn.",
     )
 
     return parser.parse_args()
