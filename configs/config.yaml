@@ -1,0 +1,55 @@
+mlflow:
+  tracking_uri: "mlruns"
+  experiment_name: "Predicting Extreme Events in Apple Stock Prices"
+  experiment_description: "Predicting Extreme Events in Apple Stock Prices"
+  run_description: "TCNN-Attention"
+data:
+  ticker: "AAPL"
+  start_date: "2015-01-01"
+  end_date: "2024-01-31"
+  ffill_holidays: True # accepted values: True, False
+  impute_outliers: None # accepted values: None, median
+  extreme_event_percentage: 2
+  classes:
+    0: "No Extreme Event"
+    1: "Extreme Event"
+  keep_features:
+    - Open
+    - Volume
+    - Adj Close
+    - High
+    - Low
+    - Close
+  basic_features:
+    - Open
+    - Volume
+    - Daily_Return
+    - High
+    - Low
+    - Close
+#    - date_DayOfWeek_sin
+#    - date_DayOfWeek_cos
+  target: Extreme_Event_Tomorrow
+  train_split_per: 0.7
+  val_split_per: 0.15
+  test_split_per: 0.15
+modeling:
+  history: 10 # the number of days used as features for the predictions
+  rf:
+    model_name: random_forest
+    trees: 10
+    class_weights: True
+  tcnn:
+    model_name: tcnn_baseline
+    bs: 8
+    channels: 32
+    epochs: 100
+    lr: 0.001 #0.000153
+    label_smoothing: 0.1752
+    kernel: 3
+    dropout: 0.4967
+    attention: True
+    weights: True
+api_predict:
+  tcnn_model: 'runs:/dbadf4cb7eb14069aa44621d1e326634/tcnn_baseline'
+  rf_model: 'runs:/9da196926b9e4024a6e1f92d0f332e1f/random_forest'
